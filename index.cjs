@@ -23,7 +23,7 @@ async function run() {
     if (!fs.existsSync(taskDefPath)) {
       throw new Error(`Task definition file does not exist: ${taskDefinitionFile}`);
     }
-    const taskDefContents = require(taskDefPath);
+    const taskDefContents = JSON.parse(fs.readFileSync(taskDefPath).toString());
 
     // Insert the image URI
     if (!Array.isArray(taskDefContents.containerDefinitions)) {
